@@ -27,15 +27,15 @@ RSpec.describe User, type: :model do
 
     describe "attributes" do
         it "should have first_name attribute" do
-            expect(user).to have_attributes(email: user.first_name)
+            expect(user).to have_attributes(first_name: user.first_name)
         end
 
         it "should have last_name attribute" do
-            expect(user).to have_attributes(email: user.last_name)
+            expect(user).to have_attributes(last_name: user.last_name)
         end
 
         it "should have username attribute" do
-            expect(user).to have_attributes(email: user.username)
+            expect(user).to have_attributes(username: user.username)
         end
 
         it "should have email attribute" do
