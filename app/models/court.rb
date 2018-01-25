@@ -1,4 +1,6 @@
 class Court < ApplicationRecord
+    has_many :games, dependent: :destroy
+
     validates :name, presence: true
     validates :street_number, presence: true
     validates :street_name, presence: true

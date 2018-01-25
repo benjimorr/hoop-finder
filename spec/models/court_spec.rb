@@ -4,6 +4,8 @@ RSpec.describe Court, type: :model do
     let(:court) { create(:court) }
 
     # Shoulda tests
+    it { is_expected.to have_many(:games) }
+
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:street_number) }
     it { is_expected.to validate_presence_of(:street_name) }

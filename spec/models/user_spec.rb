@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
     let(:user) { create(:user) }
 
+    it { is_expected.to have_many(:games_created) }
+    it { is_expected.to have_and_belong_to_many(:games) }
+
     # Shoulda tests for first_name
     it { is_expected.to validate_presence_of(:first_name) }
     it { is_expected.to validate_length_of(:first_name).is_at_least(2) }
@@ -60,6 +63,10 @@ RSpec.describe User, type: :model do
 
         it "responds to legendary?" do
             expect(user).to respond_to(:legendary?)
+        end
+
+        it "responds to games" do
+            expect(user).to respond_to(:games)
         end
     end
 

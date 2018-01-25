@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    has_many :games_created, :class_name => 'Game', :foreign_key => 'creator_id', dependent: :destroy
+    has_and_belongs_to_many :games
+
     after_initialize { self.skill_level ||= :beginner }
 
     devise :database_authenticatable, :registerable,
