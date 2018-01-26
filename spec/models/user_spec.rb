@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
     let(:user) { create(:user) }
+    let(:court) { create(:court) }
+    let(:game) { create(:game, court: court) }
 
-    it { is_expected.to have_many(:games_created) }
-    it { is_expected.to have_and_belong_to_many(:games) }
+    it { is_expected.to have_many(:games) }
 
     # Shoulda tests for first_name
     it { is_expected.to validate_presence_of(:first_name) }
@@ -64,15 +65,20 @@ RSpec.describe User, type: :model do
         it "responds to legendary?" do
             expect(user).to respond_to(:legendary?)
         end
-
-        it "responds to games" do
-            expect(user).to respond_to(:games)
-        end
     end
 
     describe "skill_level" do
         it "is beginner by default" do
             expect(user.skill_level).to eq("beginner")
+        end
+    end
+
+    describe "associations" do
+        let(:user_game) { UserGame.create(user: user, game: game, creator: true) }
+
+        it "has a created game" do
+            user_game.save!
+            expect(user.created_games.first).to eq(game)
         end
     end
 

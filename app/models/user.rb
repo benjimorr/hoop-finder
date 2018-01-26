@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-    has_many :games_created, :class_name => 'Game', :foreign_key => 'creator_id', dependent: :destroy
-    has_and_belongs_to_many :games
+    has_many :user_games, dependent: :destroy
+    has_many :games, through: :user_games
+
+    has_many :created_games, -> { where user_games: { creator: true } }, through: :user_games, source: :game
 
     after_initialize { self.skill_level ||= :beginner }
 
