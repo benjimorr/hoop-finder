@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+    has_many :user_games, dependent: :destroy
+    has_many :games, through: :user_games
+
+    has_many :created_games, -> { where user_games: { creator: true } }, through: :user_games, source: :game
+
     after_initialize { self.skill_level ||= :beginner }
 
     devise :database_authenticatable, :registerable,

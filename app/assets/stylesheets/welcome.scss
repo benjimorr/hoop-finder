@@ -1,3 +1,29 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.home-img {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.arrow {
+    box-sizing: border-box;
+    height: 2vw;
+    width: 2vw;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 2px 2px 0px;
+    transform: rotate(45deg);
+    transition: border-width 150ms ease-in-out;
+    margin: 1rem auto;
+}
+
+.home-callouts {
+    position: relative;
+    margin-top: 3rem;
+}
+
+.home-callouts .callout-title {
+    text-align: center;
+}
