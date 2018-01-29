@@ -1,0 +1,8 @@
+<div class="page-header">
+    <h1 class="all-games-title">All Games</h1>
+    <%= link_to 'Create Game', new_game_path, :class => 'btn btn-success new-game-btn' %>
+</div>
+
+<div id="games" data-games="<%= render :partial => 'games/games', :locals => {games: @games} %>"></div>
+
+<%= javascript_pack_tag 'games' %>

@@ -47,6 +47,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   gem 'pry-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do

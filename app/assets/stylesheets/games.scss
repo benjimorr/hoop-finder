@@ -1,0 +1,40 @@
+// Place all the styles related to the games controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.all-games-title {
+    margin: 1rem;
+}
+
+.new-game-title {
+    margin: 1rem;
+    display: inline-block;
+}
+
+.new-game-btn {
+    padding: 0.5rem;
+    font-size: 150%;
+}
+
+.game-detail-btn {
+    margin: 0 0.5rem;
+}
+
+@media(min-width: 768px) {
+    .all-games-title {
+        display: inline-block;
+        -webkit-transform: translateX(50%);
+        -moz-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+
+    .new-game-btn {
+        position: relative;
+        float: right;
+        margin: 1rem;
+    }
+
+    .game-detail-right {
+        text-align: right;
+    }
+}
