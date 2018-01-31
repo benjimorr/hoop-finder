@@ -20,11 +20,11 @@ export default class GameList extends Component {
             <li key={id} className="list-group-item list-group-item-action">
                 <div className="row">
                     <div className="col-sm-6">
-                        <h2>{title}</h2>
-                        <p>{date} at {courtName}</p>
+                        <h4>{title}</h4>
+                        <h6>{date} at {courtName}</h6>
                     </div>
                     <div className="col-sm-6 game-detail-right">
-                        <h5>Players: {playerCount}/10</h5>
+                        <h6>Players: {playerCount}/10</h6>
                         <button className="btn btn-success game-detail-btn">RSVP</button>
                         <button className="btn btn-primary game-detail-btn">More Info</button>
                     </div>
