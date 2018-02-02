@@ -20,12 +20,20 @@
     margin: 0 0.5rem;
 }
 
+.filter-btn {
+    display: block;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    font-size: 120%;
+}
+
+.no-games {
+    text-align: center;
+}
+
 @media(min-width: 768px) {
     .all-games-title {
         display: inline-block;
-        -webkit-transform: translateX(50%);
-        -moz-transform: translateX(50%);
-        transform: translateX(50%);
     }
 
     .new-game-btn {

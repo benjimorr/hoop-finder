@@ -1,19 +1,16 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route
-} from 'react-router-dom';
 import AllGamesMap from './AllGamesMap';
 
 const App = (props) => (
-    <Router>
-      <div>
-        <Route
-          path='/games'
-          render={ () => <AllGamesMap apiKey={props.apiKey} locations={props.courts} isMarkerShown /> }
-        />
-      </div>
-    </Router>
+    <AllGamesMap
+        apiKey={props.apiKey}
+        locations={props.locations}
+        isMarkerShown
+        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+        loadingElement={<div style={{ height: `100%` }} />}
+        containerElement={<div style={{ height: `400px` }} />}
+        mapElement={<div style={{ height: `100%` }} />}
+    />
 )
 
 export default App;

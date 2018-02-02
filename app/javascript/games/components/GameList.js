@@ -34,10 +34,14 @@ export default class GameList extends Component {
     }
 
     render() {
-        return (
-            <ul className="list-group">
-                { this.state.games.map(game => this.renderGames(game)) }
-            </ul>
-        );
+        if(this.state.games.length === 0) {
+            return <h3 className="no-games">No Games Found</h3>;
+        } else {
+            return (
+                <ul className="list-group">
+                    { this.state.games.map(game => this.renderGames(game)) }
+                </ul>
+            );
+        }
     }
 }
