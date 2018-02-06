@@ -19,6 +19,12 @@
     margin: 2rem 0;
 }
 
+.main-logo img {
+    height: 30px;
+    width: auto;
+    margin-right: 0.5rem;
+}
+
 .devise-form {
     margin: auto;
 }
@@ -36,3 +42,9 @@
         border: 2px solid #f39c12;
     }
  }
+
+.page-header,
+.create-game-div {
+    margin-bottom: 1rem;
+    text-align: center;
+}

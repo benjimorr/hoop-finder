@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-3">
+        <%= link_to 'Upcoming Games', {controller: 'games', action: 'index', :game_filter => 'upcoming_games'}, :class => 'btn btn-secondary filter-btn' %>
+        <%= link_to 'My Games', {controller: 'games', action: 'index', :game_filter => 'my_games'}, :class => 'btn btn-secondary filter-btn' %>
+        <%= link_to 'Past Games', {controller: 'games', action: 'index', :game_filter => 'past_games'}, :class => 'btn btn-secondary filter-btn' %>
+    </div>
+
+    <div id="google-map" class="col-sm-9" data-locations="<%= render :partial => 'maps/maps', :locals => { games: @games } %>" data-api-key="<%= ENV["google_api_key"] %>"></div>
+</div>
+
+<div class="row">
+    <div class="page-header col-sm-9">
+        <h1 class="all-games-title"><%= @title %></h1>
+    </div>
+    <div class="create-game-div col-sm-3">
+        <%= link_to 'Create Game', new_game_path, :class => 'btn btn-success new-game-btn' %>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div id="games" data-games="<%= render :partial => 'games/games', :locals => { games: @games } %>"></div>
+    </div>
+</div>
+
+<%= javascript_pack_tag 'maps' %>
+<%= javascript_pack_tag 'games' %>
