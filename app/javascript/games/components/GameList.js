@@ -25,8 +25,8 @@ export default class GameList extends Component {
                     </div>
                     <div className="col-sm-6 game-detail-right">
                         <h6>Players: {playerCount}/10</h6>
-                        <button className="btn btn-success game-detail-btn">RSVP</button>
-                        <button className="btn btn-primary game-detail-btn">More Info</button>
+                        <a href="#" className="btn btn-success game-detail-btn">RSVP</a>
+                        <a href={"/games/" + id} className="btn btn-primary game-detail-btn">More Info</a>
                     </div>
                 </div>
             </li>

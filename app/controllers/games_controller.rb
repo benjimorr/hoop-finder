@@ -10,7 +10,7 @@ class GamesController < ApplicationController
             @games = Game.past_games(current_user)
             @title = "Past Games"
         else
-            @games = Game.all
+            @games = Game.upcoming_games
             @title = "Upcoming Games"
         end
     end
