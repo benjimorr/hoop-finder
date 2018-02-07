@@ -17,6 +17,9 @@ class GamesController < ApplicationController
 
     def show
         @game = Game.find(params[:id])
+        @court = @game.court
+        @players = @game.users
+        @creator = @game.users.merge(UserGame.creator).first
     end
 
     def new

@@ -5,7 +5,7 @@
         <%= link_to 'Past Games', {controller: 'games', action: 'index', :game_filter => 'past_games'}, :class => 'btn btn-secondary filter-btn' %>
     </div>
 
-    <div id="google-map" class="col-sm-9" data-locations="<%= render :partial => 'maps/maps', :locals => { games: @games } %>" data-api-key="<%= ENV["google_api_key"] %>"></div>
+    <div id="all-games-map" class="col-sm-9" data-locations="<%= render :partial => 'maps/maps', :locals => { games: @games } %>" data-api-key="<%= ENV["google_api_key"] %>"></div>
 </div>
 
 <div class="row">
