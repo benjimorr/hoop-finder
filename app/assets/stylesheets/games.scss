@@ -11,9 +11,15 @@
     display: inline-block;
 }
 
-.new-game-btn {
-    padding: 0.5rem;
+.new-game-btn,
+.rsvp-big,
+.back-btn {
+    padding: 0.5rem 1rem;
     font-size: 150%;
+}
+
+.rsvp-big {
+    float: right;
 }
 
 .game-detail-btn {
@@ -27,8 +33,18 @@
     font-size: 120%;
 }
 
-.no-games {
+#single-game-map {
+    margin-bottom: 1.5rem;
+}
+
+.no-games,
+.game-info,
+.player-list-title {
     text-align: center;
+}
+
+.player-list-title {
+    margin: 2rem 0;
 }
 
 @media(min-width: 768px) {
@@ -45,4 +61,16 @@
     .game-detail-right {
         text-align: right;
     }
+}
+
+.arrow {
+    box-sizing: border-box;
+    height: 2vw;
+    width: 2vw;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 2px 2px 0px;
+    transform: rotate(45deg);
+    transition: border-width 150ms ease-in-out;
+    margin: 1rem auto;
 }

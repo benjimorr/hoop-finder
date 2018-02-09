@@ -21,4 +21,21 @@ RSpec.describe GamesController, type: :controller do
             expect(assigns(:games)).to eq([game])
         end
     end
+
+    describe "GET #show" do
+        it "returns HTTP success" do
+            get :show, params: { id: game.id }
+            expect(response).to have_http_status(:success)
+        end
+
+        it "renders the #show view" do
+            get :show, params: { id: game.id }
+            expect(response).to render_template :show
+        end
+
+        it "assigns game to @game" do
+            get :show, params: { id: game.id }
+            expect(assigns(:game)).to eq(game)
+        end
+    end
 end

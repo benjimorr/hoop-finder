@@ -1,7 +1,9 @@
+require 'date'
+
 FactoryBot.define do
   factory :game do
     title "Best Pickup Basketball Game"
-    date "2018-05-01 14:30:00"
+    date DateTime.now + 1.month
     court
   end
 end
