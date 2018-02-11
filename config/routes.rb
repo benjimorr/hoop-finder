@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   resources :games
+  resources :user_games, only: [:create, :destroy]
 end

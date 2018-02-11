@@ -16,9 +16,9 @@ RSpec.describe GamesController, type: :controller do
             expect(response).to have_http_status(:success)
         end
 
-        it "assigns [game] to @games" do
+        it "assigns all games to @games" do
             get :index
-            expect(assigns(:games)).to eq([game])
+            expect(assigns(:games).count).to eq(Game.all.count)
         end
     end
 
@@ -36,6 +36,16 @@ RSpec.describe GamesController, type: :controller do
         it "assigns game to @game" do
             get :show, params: { id: game.id }
             expect(assigns(:game)).to eq(game)
+        end
+
+        it "assigns court to @court" do
+            get :show, params: { id: game.id }
+            expect(assigns(:court)).to eq(court)
+        end
+
+        it "assigns game.users to @players" do
+            get :show, params: { id: game.id }
+            expect(assigns(:players)).to eq(game.users)
         end
     end
 end

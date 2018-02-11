@@ -5,8 +5,8 @@ export default class AllGamesMap extends Component {
     constructor(props) {
         super(props)
 
-        const DEFAULT_LAT = 40.7634993;
-        const DEFAULT_LONG = -73.9902132;
+        const DEFAULT_LAT = 45.746443;
+        const DEFAULT_LONG = -73.986835;
 
         this.state = {
             currentLocation: {
