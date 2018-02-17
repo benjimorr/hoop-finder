@@ -2,7 +2,7 @@ import React from 'react';
 import CreateCourtForm from './CreateCourtForm';
 
 const App = (props) => (
-    <CreateCourtForm />
+    <CreateCourtForm apiKey={props.apiKey} />
 )
 
 export default App;

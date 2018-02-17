@@ -24,7 +24,7 @@ class CreateCourtForm extends Component {
     }
 
     onSubmit(values) {
-        this.props.createCourt(values);
+        this.props.createCourt(values, this.props.apiKey);
     }
 
     render() {

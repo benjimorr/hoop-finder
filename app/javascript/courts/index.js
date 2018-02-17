@@ -9,10 +9,11 @@ import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 const node = document.getElementById('new-court');
+const apiKey = node.getAttribute('data-api-key');
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <App />
+        <App apiKey={apiKey} />
     </Provider>,
     node
 );
