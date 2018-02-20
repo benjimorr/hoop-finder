@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { createCourt } from '../actions/index';
+import { geocodeAddress } from '../actions/index';
 
 class CreateCourtForm extends Component {
     renderField(field) {
@@ -24,7 +24,7 @@ class CreateCourtForm extends Component {
     }
 
     onSubmit(values) {
-        this.props.createCourt(values, this.props.apiKey);
+        this.props.geocodeAddress(values, this.props.apiKey);
     }
 
     render() {
@@ -78,5 +78,5 @@ export default reduxForm({
     validate,
     form: 'CreateCourtForm'
 })(
-    connect(null, { createCourt })(CreateCourtForm)
+    connect(null, { geocodeAddress })(CreateCourtForm)
 );

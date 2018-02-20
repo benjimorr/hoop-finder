@@ -1,25 +1,47 @@
 import axios from 'axios';
-export const CREATE_COURT = "CREATE_COURT";
+export const FIND_ADDRESS = "FIND_ADDRESS";
+export const NEARBY_COURTS = "NEARBY_COURTS";
 
-export function createCourt(values, apiKey) {
-    const streetAddress = values.streetAddress.split(' ').join('+');
-    const city = values.city.split(' ').join('+');
-    const fullAddress = `${streetAddress},+${city},+${values.state}`;
+export function geocodeAddress(values, apiKey) {
+    let streetAddress = values.streetAddress.split(' ').join('+');
+    let city = values.city.split(' ').join('+');
+    let fullAddress = `${streetAddress},+${city},+${values.state}`;
 
-    const request = axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${apiKey}`)
-        .then((response) => {
-            const { lat, lng } = response.data.results[0].geometry.location;
-            return axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=5000&keyword=basketball+court&key=${apiKey}`);
+    let request = axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${fullAddress}&key=${apiKey}`)
+        .catch(function(err) {
+            console.error(err);
         })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch(function(error) {
-            console.log(error);
-        });
 
     return {
-        type: CREATE_COURT,
-        payload: null
+        type: FIND_ADDRESS,
+        payload: request
+    }
+}
+
+export function findNearbyCourts(lat, lng) {
+    return (dispatch) => {
+        let pyrmont = new google.maps.LatLng(lat, lng);
+        let map = new google.maps.Map(document.getElementById('courts-map'), {
+            center: pyrmont,
+            zoom: 15
+        });
+
+        let placesRequest = {
+            location: pyrmont,
+            radius: '500',
+            query: 'basketball court'
+        };
+
+        let service = new google.maps.places.PlacesService(map);
+        service.textSearch(placesRequest, (response, status) => {
+            dispatch(setNearbyCourts(response, status));
+        });
+    }
+}
+
+function setNearbyCourts(response, status) {
+    return {
+        type: NEARBY_COURTS,
+        payload: response
     }
 }

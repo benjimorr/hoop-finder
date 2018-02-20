@@ -1,8 +1,20 @@
 import React from 'react';
 import CreateCourtForm from './CreateCourtForm';
+import NearbyCourtList from './NearbyCourtList';
 
 const App = (props) => (
-    <CreateCourtForm apiKey={props.apiKey} />
+    <div>
+        <div className="row">
+            <div className="col-sm-12">
+                <CreateCourtForm apiKey={props.apiKey} />
+            </div>
+        </div>
+        <div className="row">
+            <div className="col-sm-12">
+                <NearbyCourtList />
+            </div>
+        </div>
+    </div>
 )
 
 export default App;
