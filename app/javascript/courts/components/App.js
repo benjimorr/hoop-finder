@@ -11,7 +11,7 @@ const App = (props) => (
         </div>
         <div className="row">
             <div className="col-sm-12">
-                <NearbyCourtList />
+                <NearbyCourtList authToken={props.authToken} />
             </div>
         </div>
     </div>

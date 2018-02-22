@@ -20,7 +20,7 @@ class NearbyCourtList extends Component {
     renderCourt(court) {
         if(court.formatted_address.split(', ').length > 3) {
             return (
-                <NearbyCourt key={court.place_id} court={court} />
+                <NearbyCourt key={court.place_id} court={court} authToken={this.props.authToken} />
             );
         }
     }

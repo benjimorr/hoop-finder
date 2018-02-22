@@ -9,6 +9,8 @@ export default class NearbyCourt extends Component {
         const placeId = this.props.court.place_id;
         const name = this.props.court.name;
         const address = this.props.court.formatted_address;
+        const latitude = this.props.court.geometry.location.lat();
+        const longitude = this.props.court.geometry.location.lng();
 
         return (
             <li className="list-group-item">
@@ -18,7 +20,15 @@ export default class NearbyCourt extends Component {
                         <b>{address}</b>
                     </div>
                     <div className="col-sm-6 select-court-btn">
-                        <button className="btn btn-success">Select Court</button>
+                        <form method='post' action='/courts' className='select-court-form'>
+                            <input type="hidden" name="google_places_id" value={"" + placeId + ""} />
+                            <input type="hidden" name="name" value={"" + name + ""} />
+                            <input type="hidden" name="address" value={"" + address + ""} />
+                            <input type="hidden" name="latitude" value={"" + latitude + ""} />
+                            <input type="hidden" name="longitude" value={"" + longitude + ""} />
+                            <input type="hidden" name="authenticity_token" value={"" + this.props.authToken + ""} />
+                            <button type="submit" className="btn btn-success">Select Court</button>
+                        </form>
                     </div>
                 </div>
             </li>

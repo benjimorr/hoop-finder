@@ -11,10 +11,11 @@ const createStoreWithMiddleware = applyMiddleware(ReduxPromise, thunk)(createSto
 
 const node = document.getElementById('new-court');
 const apiKey = node.getAttribute('data-api-key');
+const authToken = node.getAttribute('data-auth-token');
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <App apiKey={apiKey} />
+        <App apiKey={apiKey} authToken={authToken} />
     </Provider>,
     node
 );
