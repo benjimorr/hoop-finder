@@ -31,7 +31,7 @@ RSpec.describe UserGamesController, type: :controller do
 
         context "when the game is full" do
             before do
-                9.times do
+                10.times do
                     UserGame.create!(user: user, game: game)
                 end
             end
@@ -39,7 +39,6 @@ RSpec.describe UserGamesController, type: :controller do
             it "does not allow player to join the game" do
                 post :create, params: { user_id: other_user.id, game_id: game.id }
                 expect(game.users.count).to eq 10
-                expect(flash.now[:alert]).to eq("This game is full and you cannot join.")
             end
 
 

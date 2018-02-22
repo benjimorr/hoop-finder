@@ -28,7 +28,7 @@
     </div>
     <div class="game-info col-sm-4">
         <h2>Address</h2>
-        <p><%= "#{@court.street_number} #{@court.street_name}, #{@court.city} #{@court.state}, #{@court.zip_code}" %></p>
+        <p><%= format_display_address(@court) %></p>
     </div>
     <div class="game-info col-sm-4">
         <h2>Player Count</h2>

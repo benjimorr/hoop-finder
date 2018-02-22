@@ -48,3 +48,16 @@
     margin-bottom: 1rem;
     text-align: center;
 }
+
+.site-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    overflow:hidden;
+}
+
+.footer-links {
+    text-align: right;
+}
