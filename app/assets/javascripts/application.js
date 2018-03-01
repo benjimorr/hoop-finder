@@ -16,3 +16,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require flatpickr
+
+$('#date-picker').flatpickr({
+    minDate: "today",
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+});
