@@ -12,6 +12,11 @@ class GamesController < ApplicationController
     end
 
     def new
+        @game = Game.new
+        @court_id = params[:court_id]
+    end
+
+    def create
     end
 
     private

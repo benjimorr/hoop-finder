@@ -1,3 +1,5 @@
 <div class="page-header">
     <h1 class="new-game-title">New Game</h1>
 </div>
+
+<%= render partial: 'form', locals: { :game => @game, :court_id => @court_id }, class: "game-form" %>

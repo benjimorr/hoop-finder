@@ -13,7 +13,8 @@
 
 .new-game-btn,
 .rsvp-big,
-.back-btn {
+.back-btn,
+.save-btn {
     padding: 0.5rem 1rem;
     font-size: 150%;
 }
@@ -22,8 +23,18 @@
     margin-top: 2rem;
 }
 
+.game-form {
+    position: relative;
+    width: 50%;
+    margin: auto;
+}
+
 .rsvp-big {
     float: right;
+}
+
+.save-btn {
+    margin-right: 1rem;
 }
 
 .game-detail-form {
