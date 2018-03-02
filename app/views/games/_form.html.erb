@@ -19,7 +19,7 @@
 
             <%= form_group_tag(game.errors[:date]) do %>
                 <%= f.label :date %>
-                <%= f.text_field :date, id: "date-picker", class: "flatpickr flatpickr-input form-control", placeholder: "Enter game date" %>
+                <%= f.text_field :date, :readonly => true, id: "date-picker", class: "flatpickr flatpickr-input form-control", placeholder: "Enter game date" %>
             <% end %>
 
             <%= hidden_field_tag 'court_id', court_id  %>

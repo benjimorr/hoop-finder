@@ -17,6 +17,7 @@ class GamesController < ApplicationController
     end
 
     def create
+        raise "Boom"
     end
 
     private

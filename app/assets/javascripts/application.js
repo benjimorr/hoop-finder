@@ -18,8 +18,11 @@
 //= require bootstrap-sprockets
 //= require flatpickr
 
-$('#date-picker').flatpickr({
-    minDate: "today",
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
+$(document).ready(function() {
+    $('#date-picker').flatpickr({
+        altInput: true,
+        minDate: "today",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    });
 });
