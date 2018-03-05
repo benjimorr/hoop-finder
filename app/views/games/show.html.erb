@@ -3,7 +3,7 @@
         <%= link_to 'Back', games_path, :class => 'back-btn btn btn-secondary' %>
     </div>
     <div class="col-sm-6">
-        <% if player_is_creator?(@game) %>
+        <% if player_is_creator?(@game, current_user) %>
             <%= link_to 'Remove Game', game_path(:id => @game.id), :method => :delete, data: { confirm: 'Are you sure you want to remove this game from Hoopfinder? The game will be deleted and all players will be removed.' }, :class => 'rsvp-big btn btn-danger' %>
         <% elsif player_in_game?(@game.id) %>
             <%= link_to 'Leave Game', user_game_path(:id => get_user_game_id(current_user.id, @game.id)), :method => :delete, data: { confirm: 'Are you sure you want to leave this game?' }, :class => 'rsvp-big btn btn-danger' %>
@@ -24,7 +24,7 @@
 <div class="row">
     <div class="game-info col-sm-4">
         <h2>Date</h2>
-        <p><%= @game.date.strftime("%A, %m/%d/%Y at %H:%M %p") %></p>
+        <p><%= @game.date.strftime("%A, %m/%d/%Y at %I:%M %p") %></p>
     </div>
     <div class="game-info col-sm-4">
         <h2>Address</h2>
@@ -53,7 +53,13 @@
         <tbody>
             <% @players.each do | player | %>
             <tr>
-                <td><%= "#{player.first_name} #{player.last_name}" %></td>
+                <td>
+                    <% if player_is_creator?(@game, player) %>
+                        <%= "#{player.first_name} #{player.last_name} (creator)" %>
+                    <% else %>
+                        <%= "#{player.first_name} #{player.last_name}" %>
+                    <% end %>
+                </td>
                 <td><%= player.skill_level.capitalize %></td>
                 <td><%= link_to 'Add Friend', '#', :class => 'btn btn-secondary' %></td>
             </tr>

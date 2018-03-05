@@ -1,6 +1,6 @@
 module GamesHelper
-    def player_is_creator?(game)
-        current_user.created_games.include?(game)
+    def player_is_creator?(game, user)
+        user.created_games.include?(game)
     end
 
     def player_in_game?(game_id)

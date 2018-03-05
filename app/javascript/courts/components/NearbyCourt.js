@@ -20,6 +20,7 @@ export default class NearbyCourt extends Component {
                         <b>{address}</b>
                     </div>
                     <div className="col-sm-6 select-court-btn">
+                        <a href={"https://www.google.com/maps/?q=" + latitude + "," + longitude} target="_blank" className="btn btn-info">View on Map</a>
                         <form method='post' action='/courts' className='select-court-form'>
                             <input type="hidden" name="google_places_id" value={"" + placeId + ""} />
                             <input type="hidden" name="name" value={"" + name + ""} />

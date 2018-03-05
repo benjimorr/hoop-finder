@@ -65,4 +65,20 @@ RSpec.describe GamesController, type: :controller do
             expect(assigns(:game)).not_to be_nil
         end
     end
+
+    describe "POST #create" do
+        it "increases the number of games by 1" do
+            expect { post :create, params: { game: {title: "Cool New Game", date: (DateTime.now + 1.month)}, court_id: court.id } }.to change(Game, :count).by(1)
+        end
+
+        it "assigns Game.last to @game" do
+            post :create, params: { game: {title: "Cool New Game", date: (DateTime.now + 1.month)}, court_id: court.id }
+            expect(assigns(:game)).to eq(Game.last)
+        end
+
+        it "redirects to the new game page" do
+            post :create, params: { game: {title: "Cool New Game", date: (DateTime.now + 1.month)}, court_id: court.id }
+            expect(response).to redirect_to Game.last
+        end
+    end
 end
