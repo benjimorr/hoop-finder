@@ -12,6 +12,22 @@ class GamesController < ApplicationController
     end
 
     def new
+        @game = Game.new
+        @court_id = params[:court_id]
+    end
+
+    def create
+        @game = Game.new(game_params)
+        @game.court_id = params[:court_id]
+
+        if @game.save
+            add_creator_to_game(@game.id)
+            flash[:notice] = "Game was successfully created."
+            redirect_to @game
+        else
+            flash.now[:alert] = "There was an error creating the game. Please try again."
+            render :new
+        end
     end
 
     private
@@ -57,7 +73,11 @@ class GamesController < ApplicationController
         @creator = @game.users.merge(UserGame.creator).first
     end
 
+    def add_creator_to_game(game_id)
+        UserGame.create!(user_id: current_user.id, game_id: game_id, creator: true)
+    end
+
     def game_params
-        params.require(:game).permit(:title, :date, :court)
+        params.require(:game).permit(:title, :date)
     end
 end

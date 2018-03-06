@@ -16,3 +16,13 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require flatpickr
+
+$(document).ready(function() {
+    $('#date-picker').flatpickr({
+        altInput: true,
+        minDate: "today",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+    });
+});

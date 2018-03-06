@@ -50,8 +50,6 @@ games = Game.all.compact
 
     user_creators.delete(some_creator)
     games.delete(some_game)
-    # user_creators.to_a - [some_creator]
-    # games.to_a - [some_game]
 end
 
 # Create other players
@@ -63,7 +61,6 @@ end
     )
 
     other_users.delete(another_player)
-    # other_users.to_a - [another_player]
 end
 
 puts "Seeds finished"
