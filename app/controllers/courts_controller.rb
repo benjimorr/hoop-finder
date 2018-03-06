@@ -30,12 +30,16 @@ class CourtsController < ApplicationController
 
     def format_address
         address = court_params[:address].split(', ')
-        street_number = address[-4].match(/^\d{1,}-?\d{1,}/).to_s.tr("-", "").to_i
-        street_name = address[-4].match(/[a-zA-Z\s&]{1,}/).to_s.lstrip
+        street_number = is_number?(address[-4].split(" ")[0].tr("-", "")) ? address[-4].split(" ")[0].tr("-", "").to_i : 0
+        street_name = street_number == 0 ? address[-4] : address[-4].split(" ")[1..-1].join(" ")
         city = address[-3]
         state = address[-2].split(' ')[0]
         zip_code = address[-2].split(' ')[1].to_i
         return street_number, street_name, city, state, zip_code
+    end
+
+    def is_number?(string)
+        true if Float(string) rescue false
     end
 
     def court_params
