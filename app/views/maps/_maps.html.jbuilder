@@ -14,6 +14,6 @@ if @games
     end
 end
 
-if @game
-    json.court @game.court, :id, :name, :latitude, :longitude, :google_places_id
+if @game_finder
+    json.court @game_finder.court, :id, :name, :latitude, :longitude, :google_places_id
 end

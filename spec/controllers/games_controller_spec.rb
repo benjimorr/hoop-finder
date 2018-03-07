@@ -23,6 +23,9 @@ RSpec.describe GamesController, type: :controller do
     end
 
     describe "GET #show" do
+        let(:params) { {id: game.id} }
+        let(:game_finder) { GameFinder.new(params) }
+
         it "returns HTTP success" do
             get :show, params: { id: game.id }
             expect(response).to have_http_status(:success)
@@ -33,19 +36,19 @@ RSpec.describe GamesController, type: :controller do
             expect(response).to render_template :show
         end
 
-        it "assigns game to @game" do
+        it "assigns game to @game_finder.game" do
             get :show, params: { id: game.id }
-            expect(assigns(:game)).to eq(game)
+            expect(game_finder.game).to eq(game)
         end
 
-        it "assigns court to @court" do
+        it "assigns court to @game_finder.court" do
             get :show, params: { id: game.id }
-            expect(assigns(:court)).to eq(court)
+            expect(game_finder.court).to eq(court)
         end
 
-        it "assigns game.users to @players" do
+        it "assigns game.users to @game_finder.players" do
             get :show, params: { id: game.id }
-            expect(assigns(:players)).to eq(game.users)
+            expect(game_finder.players).to eq(game.users)
         end
     end
 

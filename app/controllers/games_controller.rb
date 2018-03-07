@@ -5,10 +5,7 @@ class GamesController < ApplicationController
     end
 
     def show
-        find_game
-        find_court
-        find_players
-        find_creator
+        @game_finder = GameFinder.new(params)
     end
 
     def new
@@ -69,21 +66,21 @@ class GamesController < ApplicationController
         end
     end
 
-    def find_game
-        @game = Game.find(params[:id])
-    end
-
-    def find_court
-        @court = @game.court
-    end
-
-    def find_players
-        @players = @game.users
-    end
-
-    def find_creator
-        @creator = @game.users.merge(UserGame.creator).first
-    end
+    # def find_game
+    #     @game = Game.find(params[:id])
+    # end
+    #
+    # def find_court
+    #     @court = @game.court
+    # end
+    #
+    # def find_players
+    #     @players = @game.users
+    # end
+    #
+    # def find_creator
+    #     @creator = @game.users.merge(UserGame.creator).first
+    # end
 
     def add_creator_to_game(game_id)
         UserGame.create!(user_id: current_user.id, game_id: game_id, creator: true)
