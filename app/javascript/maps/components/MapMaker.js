@@ -24,13 +24,13 @@ const renderMarker = (id, name, lat, lng) => {
             </Marker>;
 }
 
-const MapMaker = withScriptjs(withGoogleMap((props) =>
-    <GoogleMap
-        defaultZoom={12}
-        defaultCenter={{ lat: props.latitude, lng: props.longitude }}
-    >
-        {props.isMarkerShown && props.locations.map(loc => renderMarker(loc.id, loc.name, loc.latitude, loc.longitude))}
-    </GoogleMap>
-));
+const MapMaker = withScriptjs(withGoogleMap((props) => {
+    return <GoogleMap
+                defaultZoom={8}
+                defaultCenter={{ lat: props.latitude, lng: props.longitude }}
+            >
+                {props.isMarkerShown && props.locations.map(loc => renderMarker(loc.id, loc.name, loc.latitude, loc.longitude))}
+            </GoogleMap>;
+}));
 
 export default MapMaker;

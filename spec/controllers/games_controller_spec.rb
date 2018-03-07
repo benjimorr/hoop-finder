@@ -81,4 +81,23 @@ RSpec.describe GamesController, type: :controller do
             expect(response).to redirect_to Game.last
         end
     end
+
+    describe "DELETE #destroy" do
+        it "deletes the game" do
+            delete :destroy, params: { id: game.id }
+            count = Game.where({id: game.id}).size
+            expect(count).to eq(0)
+        end
+
+        it "removes players from the game" do
+            delete :destroy, params: { id: game.id }
+            count = UserGame.where({id: game.id}).size
+            expect(count).to eq(0)
+        end
+
+        it "redirects to the game index" do
+            delete :destroy, params: { id: game.id }
+            expect(response).to redirect_to games_path
+        end
+    end
 end

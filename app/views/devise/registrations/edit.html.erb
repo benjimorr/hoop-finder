@@ -43,7 +43,7 @@
 
       <div class="field form-group">
         <%= f.label :skill_level %><br />
-        <%= f.select(:skill_level, options_for_select([["Beginner", "beginner"], ["Intermediate", "intermediate"], ["Advanced", "advanced"], ["Legendary", "legendary"]]), {}, { :class => 'form-control' }) %>
+        <%= f.select(:skill_level, options_for_select([["Beginner", "beginner"], ["Intermediate", "intermediate"], ["Advanced", "advanced"], ["Legendary", "legendary"]], :selected => f.object.skill_level), {}, { :class => 'form-control' }) %>
       </div>
 
       <div class="field form-group">

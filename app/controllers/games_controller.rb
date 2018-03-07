@@ -30,6 +30,18 @@ class GamesController < ApplicationController
         end
     end
 
+    def destroy
+        @game = Game.find(params[:id])
+
+        if @game.destroy
+            flash[:notice] = "#{@game.title} was successfully deleted."
+            redirect_to action: :index
+        else
+            flash.now[:alert] = "There was an error removing the game. Please try again."
+            render :show
+        end
+    end
+
     private
     def find_games
         case params[:game_filter]
