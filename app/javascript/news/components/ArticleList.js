@@ -10,10 +10,17 @@ class ArticleList extends Component {
   }
 
   renderStory(story) {
+    let title = story.children[0].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
+    let pubDate = story.children[3].innerHTML;
+    let description = story.children[1].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
+    let link = story.children[2].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
+
     return (
-      <div>
-        {story}
-      </div>
+      <li key={story.id} className="list-group-item">
+        <a href={link} target="_blank"><h4>{title}</h4></a>
+        <p>{pubDate}</p>
+        <p>{description}</p>
+      </li>
     );
   }
 
@@ -39,9 +46,5 @@ class ArticleList extends Component {
 function mapStateToProps({ feedResults }) {
     return { feedResults };
 }
-
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({  }, dispatch);
-// }
 
 export default connect(mapStateToProps)(ArticleList);

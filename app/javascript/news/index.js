@@ -13,7 +13,7 @@ const node = document.getElementById('news-feed');
 
 ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
-        <App />
+      <App />
     </Provider>,
     node
 );
