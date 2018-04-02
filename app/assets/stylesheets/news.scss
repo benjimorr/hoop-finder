@@ -1,0 +1,19 @@
+// Place all the styles related to the news controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.basketball-news-title {
+    margin: 1rem;
+    text-align: center;
+}
+
+.rss-feed-form {
+  position: relative;
+  text-align: center;
+  margin: 1rem;
+}
+
+.no-news-feed {
+  margin-top: 2rem;
+  text-align: center;
+}
