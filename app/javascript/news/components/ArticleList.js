@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
@@ -11,7 +12,7 @@ class ArticleList extends Component {
 
   renderStory(story) {
     let title = story.children[0].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
-    let pubDate = story.children[3].innerHTML;
+    let pubDate = moment.utc(story.children[3].innerHTML).format('MMMM Do YYYY');
     let description = story.children[1].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
     let link = story.children[2].innerHTML.replace("<![CDATA[", "").replace("]]>", "");
 
@@ -27,7 +28,7 @@ class ArticleList extends Component {
   render() {
     if(this.props.feedResults.length > 0) {
       return (
-        <div className="">
+        <div>
           <ul className="list-group">
             {this.props.feedResults.map(result => this.renderStory(result))}
           </ul>
@@ -35,7 +36,7 @@ class ArticleList extends Component {
       );
     } else {
       return (
-        <div className="">
+        <div className="no-news-feed">
           <h2 className="">Please select a news feed to view basketball news.</h2>
         </div>
       );

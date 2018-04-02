@@ -30,15 +30,14 @@ class RssFeedForm extends Component {
     return (
       <div className="rss-feed-form">
         <form onSubmit={handleSubmit(this.onSubmit)}>
-          <label>
-            Choose a feed to view news:
+          <label className="form-select-input">
             <select name="feedName" value={this.state.value} onChange={this.handleChange} className="form-control">
               <option value="">Choose feed...</option>
               <option value="http://www.espn.com/espn/rss/nba/news">NBA Basketball</option>
               <option value="http://www.espn.com/espn/rss/ncb/news">College Basketball</option>
             </select>
           </label>
-          <button type="submit" className="btn btn-secondary">Go</button>
+          <button type="submit" className="btn btn-secondary">Get News</button>
         </form>
       </div>
     );
